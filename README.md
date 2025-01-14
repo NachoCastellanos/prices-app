@@ -78,6 +78,12 @@ The data is stored in an **H2** in-memory database, using the table `PRICES`. So
 git clone https://github.com/your-username/prices-app.git
 cd prices-app
 ```
+2 **Run** :
+
+```bash
+mvn spring-boot:run
+```
+
 ### Database Initialization
    The database is automatically initialized at startup using **data.sql**. The **PRICES** table contains the following columns:
    ```roomsql
@@ -93,6 +99,11 @@ cd prices-app
        CURRENCY VARCHAR(3)
    );
    ```
+
+You can access to the database by this url:
+
+http://localhost:8080/h2-console
+
 Example rows inserted via data.sql:
 ```roomsql
 INSERT INTO PRICES (ID, BRAND_ID, PRODUCT_ID, PRICE_LIST, START_DATE, END_DATE, PRIORITY, PRICE, CURRENCY)
@@ -110,18 +121,22 @@ The application exposes the following REST API:
 Description: Retrieves the applicable price for a product based on brand, product, and date/time.
 Parameters:
 
+http://localhost:8080/api/prices/search?brandId=1&productId=35455&applicationDate=2020-06-14%2010:00:00
+
+http://localhost:8080/api/prices/search?brandId=1&productId=35455&applicationDate=2020-06-14%2010:00:00
+
 1. **brandId** (required): Brand ID.
 2. **productId** (required): Product ID.
 3. **applicationDate** (required): Date and time to apply in yyyy-MM-dd'T'HH:mm:ss format.
 ```json
 {
-    "productId": 35455,
-    "brandId": 1,
-    "priceList": 2,
-    "price": 25.45,
-    "currency": "EUR",
-    "startDate": "2020-06-14T15:00:00",
-    "endDate": "2020-06-14T18:30:00"
+  "productId": 35455,
+  "brandId": 1,
+  "priceList": 1,
+  "startDate": "2020-06-14T00:00:00",
+  "endDate": "2020-12-31T23:59:59",
+  "price": 35.5,
+  "curr": "EUR"
 }
 
  ```
@@ -130,9 +145,11 @@ Parameters:
 ## Testing
 Key test scenarios include:
 
-Query for a price at a date covered by one price range.
-Query for a price at a date covered by overlapping ranges with different priorities.
-Query for a price outside all ranges.
+1. Query for a price at a date covered by one price range.
+
+2. Query for a price at a date covered by overlapping ranges with different priorities.
+
+3. Query for a price outside all ranges.
 
 ---
 
