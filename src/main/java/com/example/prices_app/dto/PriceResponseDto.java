@@ -26,4 +26,59 @@ public class PriceResponseDto {
     }
 
     // getters, setters
+    public Long getProductId() {
+        return productId;
+    }
+
+    public Integer getBrandId() {
+        return brandId;
+    }
+
+    public Integer getPriceList() {
+        return priceList;
+    }
+
+    public LocalDateTime getStartDate() {
+        return startDate;
+    }
+
+    public LocalDateTime getEndDate() {
+        return endDate;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public String getCurr() {
+        return curr;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
+
+    public void setBrandId(Integer brandId) {
+        this.brandId = brandId;
+    }
+
+    public void setPriceList(Integer priceList) {
+        this.priceList = priceList;
+    }
+
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public void setCurr(String curr) {
+        this.curr = curr;
+    }
 }
