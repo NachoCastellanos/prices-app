@@ -1,11 +1,13 @@
 package com.example.prices_app.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "PRICES")
+@Data
 public class Price {
 
     @Id
@@ -36,6 +38,6 @@ public class Price {
     @Column(name = "CURR")
     private String curr;
 
-    // getters, setters o @Data si usas Lombok
+    // getters, setters con Lombok
 
 }
